@@ -7,3 +7,10 @@ main {
   position: relative;
   z-index: 1;
 }
+
+.feedback-box {
+  max-height: 60px;        /* height of cell */
+  overflow-y: auto;        /* vertical scroll */
+  white-space: normal;     /* allow wrapping */
+  padding-right: 5px;
+}

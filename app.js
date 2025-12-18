@@ -75,25 +75,25 @@ app.get("/", (req, res) => {
   res.send("App is running");
 });
 
-app.get("/create-admin", async (req, res) => {
-  const bcrypt = require("bcrypt");
-  const User = require("./models/User");
+// app.get("/create-admin", async (req, res) => {
+//   const bcrypt = require("bcrypt");
+//   const User = require("./models/User");
 
-  const existingAdmin = await User.findOne({ role: "admin" });
-  if (existingAdmin) {
-    return res.send("Admin already exists");
-  }
+//   const existingAdmin = await User.findOne({ role: "admin" });
+//   if (existingAdmin) {
+//     return res.send("Admin already exists");
+//   }
 
-  const hashed = await bcrypt.hash("admin123", 10);
+//   const hashed = await bcrypt.hash("admin123", 10);
 
-  await User.create({
-    username: "admin",
-    password: hashed,
-    role: "admin",
-  });
+//   await User.create({
+//     username: "admin",
+//     password: hashed,
+//     role: "admin",
+//   });
 
-  res.send("Admin created successfully");
-});
+//   res.send("Admin created successfully");
+// });
 
 app.use(authRoutes);        // /login, /logout
 app.use(agentRoutes);       // /calls, /calls/new

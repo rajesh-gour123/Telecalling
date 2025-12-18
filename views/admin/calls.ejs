@@ -1,49 +1,71 @@
 <% layout('layouts/boilerplate') %>
 
-<h2>All Calls (Admin)</h2>
-<a href="/admin/calls/export">Download Excel</a>
-<a href="/admin/agents" class="btn btn-secondary mb-2">Manage Agents</a>
+  <h2>All Calls (Admin)</h2>
+  <a href="/admin/calls/export">Download Excel</a>
+  <a href="/admin/agents" class="btn btn-secondary mb-2">Manage Agents</a>
 
-<br /><br />
+  <br /><br />
 
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Agent</th>
-      <th>Name</th>
-      <th>Mobile</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Status</th>
-      <th>Follow-up</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% if (calls.length === 0) { %>
+  <table class="table table-bordered table-striped">
+    <thead>
       <tr>
-        <td colspan="8">No calls found</td>
+        <th>#</th>
+        <th>Agent</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Feedback</th>
+        <th>Follow-up</th>
       </tr>
-    <% } %>
+    </thead>
 
-    <% calls.forEach((call, index) => { %>
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><%= call.agent.username %></td>
-        <td><%= call.customerName %></td>
-        <td><%= call.mobileNumber %></td>
-        <td><%= call.callDate.toDateString() %></td>
-        <td><%= call.callTime %></td>
-        <td><%= call.status %></td>
-        <td>
-          <% if (call.followUpDate) { %>
-            <%= call.followUpDate.toDateString() %>
-          <% } else { %>
-            -
-          <% } %>
-        </td>
-      </tr>
-    <% }) %>
-  </tbody>
-</table>
+    <tbody>
+      <% if (calls.length===0) { %>
+        <tr>
+          <td colspan="8">No calls found</td>
+        </tr>
+        <% } %>
+
+          <% calls.forEach((call, index)=> { %>
+            <tr>
+              <td>
+                <%= index + 1 %>
+              </td>
+              <td>
+                <%= call.agent.username %>
+              </td>
+              <td>
+                <%= call.customerName %>
+              </td>
+              <td>
+                <%= call.mobileNumber %>
+              </td>
+              <td>
+                <%= call.callDate.toDateString() %>
+              </td>
+              <td>
+                <%= call.callTime %>
+              </td>
+              <td>
+                <%= call.status %>
+              </td>
+              <!-- FEEDBACK -->
+              <td>
+                <div class="feedback-box">
+                  <%= call.feedback ? call.feedback : "-" %>
+                </div>
+              </td>
+
+              <td>
+                <% if (call.followUpDate) { %>
+                  <%= call.followUpDate.toDateString() %>
+                    <% } else { %>
+                      -
+                      <% } %>
+              </td>
+            </tr>
+            <% }) %>
+    </tbody>
+  </table>
