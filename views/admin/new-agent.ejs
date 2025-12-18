@@ -1,0 +1,17 @@
+<% layout('layouts/boilerplate') %>
+
+<h3>Create Agent</h3>
+
+<form action="/admin/agents" method="POST" class="col-md-4">
+  <div class="mb-3">
+    <label class="form-label">Username</label>
+    <input type="text" name="username" class="form-control" required />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" required />
+  </div>
+
+  <button class="btn btn-primary">Create Agent</button>
+</form>

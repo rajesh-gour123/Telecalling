@@ -1,0 +1,34 @@
+<% layout('layouts/boilerplate') %>
+
+<h2>Daily Call Stats (Today)</h2>
+
+<h3>Total Calls Today: <%= totalCallsToday %></h3>
+
+<h3>Calls per Agent</h3>
+
+<table border="1" cellpadding="8">
+  <thead>
+    <tr>
+      <th>Agent</th>
+      <th>Calls Today</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (callsPerAgent.length === 0) { %>
+      <tr>
+        <td colspan="2">No calls today</td>
+      </tr>
+    <% } %>
+
+    <% callsPerAgent.forEach(item => { %>
+      <tr>
+        <td><%= item.agent.username %></td>
+        <td><%= item.count %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<br />
+
+<a href="/admin/calls">View All Calls</a>

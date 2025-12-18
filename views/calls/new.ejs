@@ -1,0 +1,50 @@
+<% layout('layouts/boilerplate') %>
+
+<h3>Add Call</h3>
+
+<form action="/calls" method="POST" class="row g-3">
+  <div class="col-md-6">
+    <label class="form-label">Customer Name</label>
+    <input type="text" name="customerName" class="form-control" required />
+  </div>
+
+  <div class="col-md-6">
+    <label class="form-label">Mobile Number</label>
+    <input type="text" name="mobileNumber" class="form-control" required />
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Call Date</label>
+    <input type="date" name="callDate" class="form-control" required />
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Call Time</label>
+    <input type="time" name="callTime" class="form-control" required />
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Status</label>
+    <select name="status" class="form-select" required>
+      <option value="">Select</option>
+      <option>Interested</option>
+      <option>Not Interested</option>
+      <option>Call later</option>
+      <option>Not reachable</option>
+    </select>
+  </div>
+
+  <div class="col-12">
+    <label class="form-label">Feedback</label>
+    <textarea name="feedback" class="form-control"></textarea>
+  </div>
+
+  <div class="col-md-6">
+    <label class="form-label">Follow-up Date</label>
+    <input type="date" name="followUpDate" class="form-control" />
+  </div>
+
+  <div class="col-12">
+    <button class="btn btn-success">Save Call</button>
+  </div>
+</form>

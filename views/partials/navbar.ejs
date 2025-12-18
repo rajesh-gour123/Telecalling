@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Telecalling</a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <% if (typeof user !=="undefined" ) { %>
+          <% if (user.role==="admin" ) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/calls">All Calls</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/stats">Stats</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/agents">Agents</a>
+            </li>
+            <% } %>
+
+              <% if (user.role==="agent" ) { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/calls">My Calls</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/calls/new">Add Call</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin/agents">Agents</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin/follow-ups">Follow-ups</a>
+                </li>
+                <% } %>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                  </li>
+                  <% } else { %>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate') %>
+
+  <h3>Agents</h3>
+
+  <a href="/admin/agents/new" class="btn btn-success mb-3">Add Agent</a>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Username</th>
+        <th>Created At</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (agents.length===0) { %>
+        <tr>
+          <td colspan="3">No agents found</td>
+        </tr>
+        <% } %>
+
+          <% agents.forEach((agent, i)=> { %>
+            <tr>
+              <td>
+                <%= i + 1 %>
+              </td>
+              <td>
+                <%= agent.username %>
+              </td>
+              <td>
+                <%= agent.createdAt.toDateString() %>
+              </td>
+              <td>
+                <form action="/admin/agents/<%= agent._id %>/delete" method="POST">
+                  <button class="btn btn-danger btn-sm">Delete</button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+    </tbody>
+  </table>

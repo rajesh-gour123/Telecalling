@@ -1,0 +1,69 @@
+<% layout('layouts/boilerplate') %>
+
+<h3>Follow-up Reminders</h3>
+
+<hr />
+
+<h4 class="text-success">Today's Follow-ups</h4>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Agent</th>
+      <th>Customer</th>
+      <th>Mobile</th>
+      <th>Follow-up Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (todayFollowUps.length === 0) { %>
+      <tr>
+        <td colspan="5">No follow-ups today</td>
+      </tr>
+    <% } %>
+
+    <% todayFollowUps.forEach(call => { %>
+      <tr>
+        <td><%= call.agent.username %></td>
+        <td><%= call.customerName %></td>
+        <td><%= call.mobileNumber %></td>
+        <td><%= call.followUpDate.toDateString() %></td>
+        <td><%= call.status %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<hr />
+
+<h4 class="text-danger">Overdue Follow-ups</h4>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Agent</th>
+      <th>Customer</th>
+      <th>Mobile</th>
+      <th>Follow-up Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (overdueFollowUps.length === 0) { %>
+      <tr>
+        <td colspan="5">No overdue follow-ups</td>
+      </tr>
+    <% } %>
+
+    <% overdueFollowUps.forEach(call => { %>
+      <tr>
+        <td><%= call.agent.username %></td>
+        <td><%= call.customerName %></td>
+        <td><%= call.mobileNumber %></td>
+        <td><%= call.followUpDate.toDateString() %></td>
+        <td><%= call.status %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
