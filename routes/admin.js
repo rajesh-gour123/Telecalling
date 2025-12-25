@@ -118,6 +118,8 @@ router.get("/calls/export", isLoggedIn, isAdmin, async (req, res) => {
     { header: "Date", key: "callDate", width: 15 },
     { header: "Time", key: "callTime", width: 10 },
     { header: "Status", key: "status", width: 15 },
+    { header: "Feedback", key: "feedback", width: 30 },
+    { header: "Follow-up", key: "followUpDate", width: 15 },
   ];
 
   calls.forEach(c =>
@@ -128,6 +130,10 @@ router.get("/calls/export", isLoggedIn, isAdmin, async (req, res) => {
       callDate: c.callDate.toDateString(),
       callTime: c.callTime,
       status: c.status,
+      feedback: c.feedback || "",
+      followUpDate: c.followUpDate
+        ? c.followUpDate.toDateString()
+        : "",
     })
   );
 
